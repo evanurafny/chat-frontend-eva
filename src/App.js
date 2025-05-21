@@ -1,23 +1,20 @@
 import logo from './logo.svg';
 import './App.css';
+import React, { useState } from "react";
+import ChatroomList from "./components/ChatroomList";
+import ChatroomDetail from "./components/ChatroomDetail";
 
 function App() {
+    const [selectedRoom, setSelectedRoom] = useState(null);
+     const handleDeleted = () => {
+    setSelectedRoom(null);
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      {!selectedRoom && <ChatroomList onSelect={setSelectedRoom} />}
+      {selectedRoom && <ChatroomDetail chatroom={selectedRoom} />}
+      {selectedRoom && <button onClick={() => setSelectedRoom(null)}>Kembali</button>}
+      
     </div>
   );
 }
