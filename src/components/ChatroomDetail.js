@@ -1,9 +1,9 @@
 import React, { useEffect, useState, useRef } from "react";
 import cable from "../cable";
 import { fetchMessages } from "../api/api";
-import { deleteChatroom } from "../api/api";
 
-export default function ChatroomDetail({ chatroom,onDeleted  }) {
+
+export default function ChatroomDetail({ chatroom  }) {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
   const subscriptionRef = useRef(null);
